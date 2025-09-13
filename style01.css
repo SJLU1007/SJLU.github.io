@@ -13,7 +13,7 @@ body {
     text-decoration: none;
 }
 .header {
-    background: url('../images/dali.png') no-repeat center;
+    background: url('..dali.png') no-repeat center;
     background-size: cover; /* 调整背景图大小以适应屏幕宽度 */
     height: 95vh;
     display: flex;
@@ -118,4 +118,5 @@ body {
 }
 .close-btn:hover {
     color: #333;
+
 }
