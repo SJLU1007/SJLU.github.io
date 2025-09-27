@@ -1,52 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <title>摄影分享</title>
-  <link href="style01.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寻宝大冒险</title>
+    <link href="treasure.css" rel="stylesheet">
 </head>
 <body>
-    <div class="nav">
-        <a href="#home">首页</a>
-        <a href="#photos">照片</a>
-        <a href="#openContact">分享</a>
-    </div>
-    <div id="home" class="header">
-        <h1>我的摄影集</h1>
-        <p>记录生活中的美好瞬间</p>
-    </div>
-    <div id="photos" class="content">
-        <h2>精选照片</h2>
-        <div class="photos">
-            <div class="photo">
-                <img src="https://ts1.tc.mm.bing.net/th/id/R-C.7a8a9a511fb3b50a28ea23530ce8885d?rik=Qrz1XYfduiKTRQ&riu=http%3a%2f%2fimg.syuan.com%2fforum%2f201705%2f11%2f115741q4plhwpg7j9ciweg.jpg&ehk=lMxSfwKxFZrWG7WG91k%2fyg1pEJscQwCIVwDipjdxngM%3d&risl=&pid=ImgRaw&r=0" alt="风景1">
-                <p>海边日出</p>
-				<p>海上日出，云霞绚烂，波光粼粼。</p>
-            </div>
-            <div class="photo">
-                <img src="https://img95.699pic.com/photo/50769/8385.jpg_wh860.jpg" alt="风景2">
-                <p>西安钟楼</p>
-				<p>西安钟楼夜色中，灯火璀璨映车流。</p>
-            </div>
-            <div class="photo">
-                <img src="https://ts1.tc.mm.bing.net/th/id/R-C.4150086ba4a269b767daf20e4419ea0e?rik=Lwv%2f2g5KQsDcBQ&riu=http%3a%2f%2fimg.pconline.com.cn%2fimages%2fupload%2fupc%2ftx%2fitbbs%2f2102%2f18%2fc3%2f253873492_1613624060582.jpg&ehk=%2fRylJUlxMaG5uCSMWdhkX0rcKqxVGpRSyqNjE36nn%2f4%3d&risl=&pid=ImgRaw&r=0" alt="风景3">
-                <p>兵马俑</p>
-				<p>青铜车马，古拙精美，尽显秦代风华，于遗址中静展历史厚重。</p>
-            </div>
+    <div class="game-container">
+        <h1>寻宝大冒险</h1>
+        <!-- 探险地图 -->
+        <div class="map-container">
+            <h3>探险地图</h3>
+            <svg class="treasure-map" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- 地形背景 -->
+                <rect x="0" y="0" width="500" height="200" fill="#e8f5e9" />
+                <path d="M0,100 Q125,50 250,100 T500,100" stroke="#81c784" stroke-width="2" fill="none" />
+                
+                <!-- 路径 -->
+                <!-- 修改 treasure.html 中的路径定义 -->
+                <path id="path" d="M50,100 L120,80 L170,95 L220,112 L270,130 L340,70 L390,110 L450,90" 
+                stroke="#bcaaa4" stroke-width="4" fill="none" stroke-dasharray="5,3" />
+                
+                <!-- 起点 -->
+                <circle id="point1" cx="50" cy="100" r="8" fill="#ffc107" />
+                <text x="50" y="80" text-anchor="middle" font-size="12">起点</text>
+                
+                <!-- 图书馆 -->
+                <circle id="point2" cx="120" cy="80" r="8" fill="#9e9e9e" />
+                <text x="120" y="60" text-anchor="middle" font-size="12">图书馆</text>
+
+                <!-- 河流 -->
+                <circle id="point3" cx="170" cy="95" r="8" fill="#9e9e9e" />
+                <text x="152" y="85" text-anchor="middle" font-size="12">河流</text>
+    
+                <!-- 山峰 -->
+                <circle id="point4" cx="220" cy="112" r="8" fill="#9e9e9e" />
+                <text x="230" y="103" text-anchor="middle" font-size="12">山峰</text>
+
+                <!-- 神庙入口 -->
+                <circle id="point5" cx="270" cy="130" r="8" fill="#9e9e9e" />
+                <text x="270" y="150" text-anchor="middle" font-size="12">神庙入口</text>
+                
+                <!-- 神庙内部 -->
+                <circle id="point6" cx="340" cy="70" r="8" fill="#9e9e9e" />
+                <text x="330" y="50" text-anchor="middle" font-size="12">神庙内部</text>
+                
+                <!-- 宝箱房间 -->
+                <circle id="point7" cx="390" cy="110" r="8" fill="#9e9e9e" />
+                <text x="390" y="130" text-anchor="middle" font-size="12">宝箱房间</text>
+                
+                <!-- 宝藏点 -->
+                <circle id="point8" cx="450" cy="90" r="8" fill="#9e9e9e" />
+                <text x="450" y="70" text-anchor="middle" font-size="12">宝藏</text>
+                
+                <!-- 当前位置标记 -->
+                <circle id="current-position" cx="50" cy="100" r="6" fill="#f44336" opacity="0" />
+            </svg>
         </div>
+        
+        <div class="step-indicator">
+            <div class="step" data-step="1">1</div>
+            <div class="step" data-step="2">2</div>
+            <div class="step" data-step="3">3</div>
+            <div class="step" data-step="4">4</div>
+            <div class="step" data-step="5">5</div>
+            <div class="step" data-step="6">6</div>
+            <div class="step" data-step="7">7</div>
+            <div class="step" data-step="8">8</div>
+        </div>
+        
+        <div class="scene" id="scene">
+            准备开始寻宝冒险！
+        </div>
+        
+        <div class="message-box" id="message">
+            点击下方按钮开始你的寻宝之旅
+        </div>
+        
+        <button class="start-btn" id="startBtn">开始寻宝</button>
     </div>
-    <button id="openContact">分享图片</button>
-<div id="contact" class="contact">
-    <span class="close-btn" id="closeContact">&times;</span>
-    <h3>分享图片</h3>
-    <form>
-        <input type="text" placeholder="图片名字">
-        <textarea placeholder="分享你的图片"></textarea>
-        <input type="file" id="imageUpload" accept="image/*" title="选择图片">
-        <button type="button" id="sendBtn">分享</button>
-    </form>
-</div>
-    <script src="script.js"></script>
+
+    <script src="treasure.js"></script>
 </body>
 </html>
-    
